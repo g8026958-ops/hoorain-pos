@@ -2,233 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Hoorain POS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoorain Cosmetics & Jewelers</title>
 
 <style>
-:root{
-  --pink:#ff4f9a;
-  --black:#0f0f14;
-  --card:#1b1b24;
-  --muted:#9aa0a6;
-}
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
 body{
   margin:0;
-  background:linear-gradient(180deg,#0b0b10,#141420);
-  color:#fff;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#1f4037,#99f2c8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
 }
-header{
-  padding:14px 16px;
-  background:var(--black);
-  position:sticky;
-  top:0;
+
+.pos{
+  background:#fff;
+  width:95%;
+  max-width:450px;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
-header h1{
-  margin:0;
-  font-size:20px;
-  color:var(--pink);
-  font-weight:800;
+
+h1{
+  text-align:center;
+  margin:5px 0;
+  color:#1f4037;
 }
-.wrap{padding:14px}
-.grid{
+
+.category{
+  margin-top:15px;
+}
+
+.category h2{
+  font-size:16px;
+  color:#333;
+  border-bottom:2px solid #1f4037;
+  padding-bottom:4px;
+}
+
+.products{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:10px;
 }
-.card{
-  background:var(--card);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 10px 20px rgba(0,0,0,.25);
-}
-.card h3{margin:0 0 8px;font-size:14px;color:#fff}
-.kpi{
-  font-size:22px;
-  font-weight:800;
-  color:var(--pink);
-}
-button{
-  background:var(--pink);
-  border:0;
-  border-radius:12px;
-  color:#000;
-  padding:12px;
-  font-weight:800;
-  width:100%;
-}
-input,select{
-  width:100%;
+
+.product{
+  background:#f2f2f2;
   padding:10px;
   border-radius:10px;
-  border:1px solid #2a2a36;
-  background:#101018;
-  color:#fff;
-  margin-bottom:8px;
+  text-align:center;
+  font-size:14px;
+  cursor:pointer;
 }
-label{font-size:12px;color:var(--muted)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hidden{display:none}
-.item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0;
-  border-bottom:1px solid #2a2a36;
-}
-.badge{
-  background:#2a2a36;
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:12px;
-}
-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#0f0f14;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;
-  padding:8px;
-}
-nav button{
-  background:#1b1b24;
+
+.product:hover{
+  background:#1f4037;
   color:#fff;
 }
-.hint{font-size:12px;color:var(--muted)}
+
+.footer{
+  margin-top:15px;
+  text-align:center;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#1f4037;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Hoorain Cosmetics & Jewelers</h1>
-</header>
+<div class="pos">
+<h1>Hoorain POS</h1>
 
-<!-- DASHBOARD -->
-<div class="wrap" id="dash">
-  <div class="grid">
-    <div class="card"><h3>Today's Sale</h3><div class="kpi" id="todaySale">0</div></div>
-    <div class="card"><h3>Daily Target</h3><div class="kpi">50,000</div></div>
-    <div class="card"><h3>Hot Item</h3><div class="kpi" id="hotItem">—</div></div>
-    <div class="card"><h3>Stock Alerts</h3><div class="kpi" id="alerts">0</div></div>
-  </div>
+<!-- COSMETICS -->
+<div class="category">
+<h2>Cosmetics</h2>
+<div class="products">
+<div class="product">Face Cream</div>
+<div class="product">Lipstick</div>
+<div class="product">Foundation</div>
+<div class="product">Compact Powder</div>
+<div class="product">Mascara</div>
+<div class="product">Eyeliner</div>
+</div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="wrap hidden" id="products">
-  <div class="card">
-    <h3>Add Product</h3>
-    <label>Product Name</label>
-    <input id="pname">
-    <div class="row">
-      <div>
-        <label>Purchase Price</label>
-        <input id="pp" type="number">
-      </div>
-      <div>
-        <label>Sale Price</label>
-        <input id="sp" type="number">
-      </div>
-    </div>
-    <div class="row">
-      <div>
-        <label>Discount %</label>
-        <input id="disc" type="number" value="0">
-      </div>
-      <div>
-        <label>Stock</label>
-        <input id="stk" type="number">
-      </div>
-    </div>
-    <button onclick="addProduct()">Save Product</button>
-  </div>
-
-  <div class="card" id="plist"></div>
+<!-- UNDERGARMENTS -->
+<div class="category">
+<h2>Undergarments</h2>
+<div class="products">
+<div class="product">Bra</div>
+<div class="product">Panty</div>
+<div class="product">Night Suit</div>
+<div class="product">Shapewear</div>
+<div class="product">Men Vest</div>
+<div class="product">Boxer</div>
+</div>
 </div>
 
-<!-- SALE -->
-<div class="wrap hidden" id="sale">
-  <div class="card">
-    <h3>New Sale</h3>
-    <label>Select Product</label>
-    <select id="sprod"></select>
-    <label>Quantity</label>
-    <input id="qty" type="number" value="1">
-    <button onclick="makeSale()">Complete Sale</button>
-  </div>
+<!-- JEWELRY -->
+<div class="category">
+<h2>Jewelry</h2>
+<div class="products">
+<div class="product">Gold Ring</div>
+<div class="product">Necklace</div>
+<div class="product">Earrings</div>
+<div class="product">Bangles</div>
+<div class="product">Bracelet</div>
+<div class="product">Anklet</div>
+</div>
 </div>
 
-<!-- STAFF -->
-<div class="wrap hidden" id="staff">
-  <div class="card">
-    <h3>Staff & Admin</h3>
-    <p class="hint">Demo mode (roles will be real after server)</p>
-  </div>
+<div class="footer">
+<button>Checkout</button>
 </div>
 
-<nav>
-  <button onclick="show('dash')">Home</button>
-  <button onclick="show('products')">Products</button>
-  <button onclick="show('sale')">Sale</button>
-  <button onclick="show('staff')">Staff</button>
-</nav>
-
-<script>
-const db = JSON.parse(localStorage.getItem('hoorain_db') || '{"products":[],"sales":0}');
-const save = () => localStorage.setItem('hoorain_db', JSON.stringify(db));
-
-function show(id){
-  ['dash','products','sale','staff'].forEach(x=>document.getElementById(x).classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-  render();
-}
-
-function addProduct(){
-  if(!pname.value) return alert("Name required");
-  db.products.push({
-    name:pname.value,
-    pp:+pp.value,
-    sp:+sp.value,
-    disc:+disc.value,
-    stk:+stk.value,
-    sold:0
-  });
-  pname.value=pp.value=sp.value=stk.value='';
-  disc.value=0;
-  save(); render();
-}
-
-function makeSale(){
-  const i=sprod.value;
-  const q=+qty.value;
-  const p=db.products[i];
-  if(!p || p.stk<q) return alert("Stock low");
-  p.stk-=q;
-  p.sold+=q;
-  db.sales+= (p.sp*(1-p.disc/100))*q;
-  save(); render();
-}
-
-function render(){
-  todaySale.textContent = Math.round(db.sales).toLocaleString();
-  const hot = db.products.sort((a,b)=>b.sold-a.sold)[0];
-  hotItem.textContent = hot?hot.name:'—';
-  alerts.textContent = db.products.filter(p=>p.stk<3).length;
-
-  plist.innerHTML = db.products.map(p=>`
-    <div class="item">
-      <div>${p.name}<div class="hint">Stock: ${p.stk}</div></div>
-      <span class="badge">${Math.round(p.sp*(1-p.disc/100))}</span>
-    </div>
-  `).join('');
-
-  sprod.innerHTML = db.products.map((p,i)=>`<option value="${i}">${p.name}</option>`).join('');
-}
-render();
-</script>
+</div>
 
 </body>
 </html>
